@@ -1,0 +1,25 @@
+name: Validate kit
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Validate skills, agents and manifests
+        run: node scripts/validate-kit.mjs
+      - name: Python scripts compile
+        run: python -m py_compile skills/community-event-sourcing/scripts/parse-pdf-calendar.py

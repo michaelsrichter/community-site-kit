@@ -1,0 +1,19 @@
+{
+  "name": "community-site-kit",
+  "owner": {
+    "name": "Mike Richter",
+    "url": "https://github.com/michaelsrichter"
+  },
+  "metadata": {
+    "description": "Copilot CLI plugins for rebuilding volunteer dance and community organization websites.",
+    "version": "1.0.0"
+  },
+  "plugins": [
+    {
+      "name": "community-site-kit",
+      "description": "Skills and agents that rebuild a dance or community group's website end to end: audit, migrate, build (Astro + Decap CMS), community events, map, photos, analytics, Azure Static Web Apps deploy, custom domain, handoff.",
+      "version": "1.0.0",
+      "source": "./"
+    }
+  ]
+}
