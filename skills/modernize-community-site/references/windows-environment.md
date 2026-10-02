@@ -15,3 +15,6 @@
 - Commit identity for a personal repo: use the account's `<id>+<login>@users.noreply.github.com` address.
 - ffmpeg is not installed by default: `npm i --no-save ffmpeg-static` in a scratch folder and call its path.
 - Python for PDF parsing: `pip install pymupdf`.
+- `npm run build` (Astro + sharp) very occasionally crashes on Windows with
+  `Assertion failed: !(handle->flags & UV_HANDLE_CLOSING)` from libuv. It is a Node/Windows issue, not
+  your code: rerun the build. If it repeats, close other Node processes and retry.

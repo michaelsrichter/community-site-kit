@@ -58,21 +58,23 @@ Locations: `home_next`, `home`, `event`, `event_aside`, `action_bar`, `events`, 
 
 ## OpenTelemetry metrics (Application Insights `customMetrics`)
 
+`<prefix>` comes from the `METRICS_PREFIX` app setting (default `site`).
+
 | Metric | Type | Dimensions |
 | --- | --- | --- |
-| `<org>.web.page_views` | Counter | `page_type`, `release` |
-| `<org>.web.event_views` | Counter | `page_type`, `event_status`, `release` |
-| `<org>.web.interactions` | Counter | `action`, `method`, `location`, `page_type` |
-| `<org>.web.consent_updates` | Counter | `value`, `mode` |
-| `<org>.web.vitals.lcp/.inp/.fcp/.ttfb` (ms), `.cls` (×1000) | Histogram | `page_type`, `rating` |
-| `<org>.telemetry.rejected` | Counter | `reason` |
-| `<org>.cms.auth` | Counter | `result` |
+| `<prefix>.web.page_views` | Counter | `page_type`, `release` |
+| `<prefix>.web.event_views` | Counter | `page_type`, `event_status`, `release` |
+| `<prefix>.web.interactions` | Counter | `action`, `method`, `location`, `page_type` |
+| `<prefix>.web.consent_updates` | Counter | `value`, `mode` |
+| `<prefix>.web.vitals.lcp/.inp/.fcp/.ttfb` (ms), `.cls` (×1000) | Histogram | `page_type`, `rating` |
+| `<prefix>.telemetry.rejected` | Counter | `reason` |
+| `<prefix>.cms.auth` | Counter | `result` |
 
 ## Azure setup
 
 - Bicep creates a Log Analytics workspace + workspace-based Application Insights; `deploy.ps1` copies the
   connection string into the Static Web App app setting (never printed).
-- Useful KQL: `customMetrics | where name startswith "<org>.web.interactions" | summarize sum(valueSum) by tostring(customDimensions.action)`.
+- Useful KQL: `customMetrics | where name == "site.web.interactions" | summarize sum(valueSum) by tostring(customDimensions.action)`.
 
 ## Tests
 

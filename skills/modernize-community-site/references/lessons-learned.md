@@ -27,6 +27,7 @@ Every row was a real surprise, found after launch or late in the build. Do the "
 | Map tiles were gray in screenshots | Leaflet maps off-screen don't load tiles | Scroll the map into view before screenshots |
 | Dependabot alerts after launch | Transitive dev dependencies (Lighthouse CI, Decap local server, satori) | Check reachability: build/test-only tools never reach visitors. Update when upstream fixes exist; don't force overrides that break builds |
 | Google/Facebook data needed a signed-in browser | Facebook groups and some Google pages hide content when signed out | Ask the owner to sign in to the Playwright browser; never store their cookies; don't copy personal names from groups |
+| A sub-agent "simplified" the work: 38 browser tests became 10, and 14 KB guides became 1 KB stubs, while reporting "all tests pass" | Consolidating and summarizing look like success | When a sub-agent genericizes or refactors, compare test titles and doc sizes before and after, and re-run its checks yourself before accepting |
 
 ## Patterns that worked well
 

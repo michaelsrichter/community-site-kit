@@ -42,8 +42,8 @@ If you are working on another codebase, copy the behavior, not necessarily the c
 - `ShowMore.astro` renders `<button aria-controls aria-expanded data-collapse-toggle>` with
   "Show 7 more <Short> dances" / "Show fewer <Short> dances". `src/scripts/collapse.ts` recounts after
   ended events are hidden, moves focus to the first revealed card, and tracks `show_more`.
-- Filters set `data-collapse-filtered` on the container and dispatch `sdli:lists-changed` (event name is
-  arbitrary; keep one) so every match shows while filtering.
+- Filters set `data-collapse-filtered` on the container and dispatch `site:lists-changed` so every
+  match shows while filtering (the collapse script listens for that event and recounts).
 - Apply to: homepage, events list (index counts across month groups), event page "More upcoming"
   (3 home + 3 community), venue, series, performer, lessons; map popups show 3 dates per place.
 
