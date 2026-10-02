@@ -36,6 +36,8 @@ Following the device setting is not enough — the first owner could not find ho
   breakpoint; switch to the Menu button *before* links wrap (first project: Menu below 78rem/1248 px, header
   allowed up to 80rem while the page stays 72rem).
 - `visual-check.mjs` in `site-quality-gates` measures header height from 320 to 1600 px.
+- Very narrow phones: let the brand text shrink and hyphenate (`min-width: 0`, `hyphens: auto`), and
+  shrink the logo and Menu button below 360 px, so any organization name fits with any system font.
 
 ## Social link in the header
 

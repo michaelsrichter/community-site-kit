@@ -87,6 +87,7 @@ installed kit folder with `copilot plugin list --json`.
 | `photo-and-video-curation/scripts/prepare-video.mjs` | Short, silent, small H.264 clip + poster |
 | `photo-and-video-curation/scripts/find-cc-photos.mjs` | Openly licensed Wikimedia Commons photos with credits |
 | `site-quality-gates/scripts/visual-check.mjs` | Light/dark × phone/desktop screenshots, 320 px overflow, header wrap, broken/upscaled images, console errors |
+| `site-quality-gates/scripts/normalize-lockfile.mjs` | Rewrites private npm mirror URLs in lockfiles to registry.npmjs.org (`--check` for CI) |
 
 ## Where each original request went
 

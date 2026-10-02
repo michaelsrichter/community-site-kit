@@ -17,6 +17,7 @@ Tests passing is not enough; look at the screenshots.
 ## 1. Automated checks (starter commands)
 
 ```powershell
+node <kit>/skills/site-quality-gates/scripts/normalize-lockfile.mjs --check   # lockfiles use registry.npmjs.org
 npx astro check                                   # 0 errors
 npx vitest run                                    # unit
 cd api; npm test; cd ..                           # API
@@ -27,6 +28,18 @@ npx playwright test                               # e2e incl. axe, 320 px, keybo
 
 Stop any preview server on port 4321 before Playwright (its webServer needs the port). If a test is
 flaky, rerun it alone; if it fails twice, it's a real bug.
+
+If the lockfile check fails, the machine installed through a private npm mirror (company proxy, Azure
+Artifacts, Artifactory) and wrote the mirror's URLs into `package-lock.json`. Run the same script without
+`--check` to rewrite them to `registry.npmjs.org` before committing — otherwise a public repo leaks an
+internal host and Dependabot fails with `private_source_authentication_failure`.
+
+CI runs on Linux, whose fallback fonts are wider than Windows' (Segoe UI). A layout that fits at 320 px
+locally can overflow in CI; long organization names in the header are the usual cause. Test with a wide
+font (inject `body,button{font-family:Verdana!important}`) when a 320 px check fails only in CI.
+
+Lighthouse's SEO score drops to ~0.7 when pages are `noindex`; build CI with indexing allowed and keep
+deploys `noindex` until launch.
 
 ## 2. Visual check (always)
 

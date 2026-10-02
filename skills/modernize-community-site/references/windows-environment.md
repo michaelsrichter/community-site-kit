@@ -15,6 +15,12 @@
 - Commit identity for a personal repo: use the account's `<id>+<login>@users.noreply.github.com` address.
 - ffmpeg is not installed by default: `npm i --no-save ffmpeg-static` in a scratch folder and call its path.
 - Python for PDF parsing: `pip install pymupdf`.
+- Work machines often point npm at a company mirror (`npm config get registry`). Installs work, but the
+  lockfile records the mirror's URLs. Before committing to a public repo, run
+  `node <kit>/skills/site-quality-gates/scripts/normalize-lockfile.mjs`. Direct HTTPS to
+  `registry.npmjs.org` may be blocked on such networks; let GitHub Actions verify installs.
+- Lighthouse CI on Windows can fail with `EPERM … lighthouse.<n>` while deleting Chrome's temp profile.
+  That is a clean-up error, not a score; rely on the Linux CI run.
 - `npm run build` (Astro + sharp) very occasionally crashes on Windows with
   `Assertion failed: !(handle->flags & UV_HANDLE_CLOSING)` from libuv. It is a Node/Windows issue, not
   your code: rerun the build. If it repeats, close other Node processes and retry.

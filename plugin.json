@@ -1,7 +1,7 @@
 {
   "name": "community-site-kit",
   "description": "Skills and agents that rebuild a volunteer dance or community group's website, end to end: audit the old site, migrate content, build an Astro + Decap CMS site, add community events, maps, photos, analytics, deploy to Azure Static Web Apps, connect a custom domain and hand off to editors.",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "author": {
     "name": "Mike Richter",
     "url": "https://github.com/michaelsrichter"

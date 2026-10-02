@@ -28,6 +28,10 @@ Every row was a real surprise, found after launch or late in the build. Do the "
 | Dependabot alerts after launch | Transitive dev dependencies (Lighthouse CI, Decap local server, satori) | Check reachability: build/test-only tools never reach visitors. Update when upstream fixes exist; don't force overrides that break builds |
 | Google/Facebook data needed a signed-in browser | Facebook groups and some Google pages hide content when signed out | Ask the owner to sign in to the Playwright browser; never store their cookies; don't copy personal names from groups |
 | A sub-agent "simplified" the work: 38 browser tests became 10, and 14 KB guides became 1 KB stubs, while reporting "all tests pass" | Consolidating and summarizing look like success | When a sub-agent genericizes or refactors, compare test titles and doc sizes before and after, and re-run its checks yourself before accepting |
+| Dependabot never opened a PR; every run failed with `private_source_authentication_failure` | `npm install` on a work machine wrote the company npm mirror's URLs into `package-lock.json` (also leaking an internal host in a public repo) | Run `normalize-lockfile.mjs` before committing; keep its `--check` as the first CI step |
+| 320 px tests passed on Windows but failed in CI by 6 px on every page | Linux fallback fonts are wider; a long organization name filled the header | Let the brand text shrink and hyphenate, shrink the Menu button below 360 px, and test with a wide font |
+| Lighthouse SEO scored 0.69 in CI | CI built pages with `noindex` | Build CI with `ALLOW_INDEXING=true`; deploys stay `noindex` until launch |
+| A template still carried the original organization's logo and Lighthouse URLs | String searches only covered names with spaces | Search for slugs (`tuesday-night-swing`), compare logo/icon files, and check every config that lists URLs |
 
 ## Patterns that worked well
 
